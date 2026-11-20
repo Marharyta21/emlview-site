@@ -2,8 +2,8 @@
 // The extension opens this page with ?pinned=0|1&id=<extension id>. While the page is visible
 // it asks the extension again every 1.5 s (externally_connectable), so pinning switches the page by itself.
 // #pin / #usage in the address are the user's own choice and stop the automatic switching.
-// Opened by hand (no ?pinned, no hash, e.g. the store's homepage link): "how to use", since the visitor may
-// not have the extension yet and "Added to Chrome" would not be true.
+// emlview.com opened without parameters (by hand, from the store) also starts on "how to pin": the owner's
+// decision 2026-11-20, the main page of the domain is the pinning guide.
 
 const STORE_IDS = []; // the Chrome Web Store ID goes here once the extension is published
 const POLL_MS = 1500;
@@ -72,8 +72,7 @@ async function check() {
 function start() {
   const fromHash = modeFromHash();
   chosenByUser = fromHash !== null;
-  const fromInstall = params.get('pinned');
-  setMode(fromHash || (fromInstall === null || fromInstall === '1' ? 'usage' : 'pin'));
+  setMode(fromHash || (params.get('pinned') === '1' ? 'usage' : 'pin'));
   if (!ids.length) return; // opened by hand, not by the extension: nothing to ask
   check();
   setInterval(check, POLL_MS);
