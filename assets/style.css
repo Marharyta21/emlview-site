@@ -1,0 +1,127 @@
+/* Shared styles for emlview.com: the extension's blue (#2563eb, from the icon), white text on it,
+   neutral pages for long text. Font: Plus Jakarta Sans (OFL), served from this site. */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/plus-jakarta-sans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --brand: #2563eb;
+  --brand-deep: #1d4ed8;
+  --on-brand: #ffffff;
+  --on-brand-muted: rgb(255 255 255 / 84%);
+  --background: #ffffff;
+  --foreground: #1f2328;
+  --muted-foreground: #5b6470;
+  --border: #e3e6ea;
+  --accent: #1d4ed8;
+  --ring: #ffffff;
+  --mark: #e5372b;
+  --radius: 14px;
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121417;
+    --foreground: #eceef1;
+    --muted-foreground: #a3abb6;
+    --border: #2b3036;
+    --accent: #93b4ff;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font: 400 1rem/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-underline-offset: 3px; }
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* The header is always on the brand blue. */
+.site-header {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  min-height: 4rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  color: var(--on-brand);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 85%);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  min-height: 4rem;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: inherit;
+}
+
+/* ---------- text pages (privacy, home) ---------- */
+
+.prose { max-width: 44rem; padding-top: 2rem; padding-bottom: 4rem; }
+
+.prose h1 { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem); line-height: 1.2; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+
+.prose h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; letter-spacing: -0.01em; }
+
+.prose .lead { color: var(--muted-foreground); font-size: 1.0625rem; }
+
+.prose ul { padding-left: 1.25rem; }
