@@ -7,7 +7,7 @@
 
 const STORE_IDS = []; // the Chrome Web Store ID goes here once the extension is published
 const POLL_MS = 1500;
-const NAME = 'EML Viewer and MSG File Viewer';
+const NAME = 'EML Viewer';
 const TITLES = { pin: `${NAME} is installed`, usage: `${NAME} is ready` };
 
 const params = new URLSearchParams(location.search);
